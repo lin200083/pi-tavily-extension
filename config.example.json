@@ -1,0 +1,10 @@
+{
+  "apiKeys": [
+    "tvly-YOUR_API_KEY_1",
+    "tvly-YOUR_API_KEY_2"
+  ],
+  "projectId": "pi-agent",
+  "defaultSearchDepth": "advanced",
+  "defaultMaxResults": 5,
+  "defaultResearchModel": "pro"
+}
