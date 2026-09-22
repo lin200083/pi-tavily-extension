@@ -27,6 +27,11 @@ git clone https://github.com/lin200083/pi-tavily-extension.git ~/.pi/agent/exten
 git clone https://github.com/lin200083/pi-tavily-extension.git $env:USERPROFILE\.pi\agent\extensions\tavily
 ```
 
+```bash
+# 或使用 SSH（github.com:443 访问不稳定时的可靠选择）
+git clone git@github.com:lin200083/pi-tavily-extension.git ~/.pi/agent/extensions/tavily
+```
+
 将仓库克隆到 `~/.pi/agent/extensions/tavily` 后，**重启 pi 即自动加载**（或运行 `/reload`）。运行时无需 `npm install`——`@earendil-works/*` 依赖由 pi 内置解析，装依赖只是为了本地类型检查。
 
 ## 快速开始
