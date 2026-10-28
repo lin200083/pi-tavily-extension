@@ -1,0 +1,11 @@
+# never commit real API keys
+config.json
+
+# build / deps
+node_modules/
+dist/
+
+# OS junk
+.DS_Store
+Thumbs.db
+*.log
