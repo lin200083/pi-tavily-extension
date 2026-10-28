@@ -1,5 +1,7 @@
 # Tavily extension for pi
 
+English | [简体中文](README.zh-CN.md)
+
 Five web tools for [pi](https://github.com/earendil-works/pi) — `tavily_search`,
 `tavily_extract`, `tavily_map`, `tavily_crawl`, `tavily_research` — with an
 optional per-session credit ceiling, multi-key failover, a response cache,
@@ -134,3 +136,7 @@ usually English-first. TUI strings are Chinese.
 
 Load the extension with pi's jiti loader and exercise the tool paths with mocked
 HTTP, then run a real `pi -p --tavily-depth basic` smoke call.
+
+## License
+
+[MIT](LICENSE) © lin200083

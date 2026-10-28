@@ -3,6 +3,20 @@
   "private": true,
   "version": "1.5.2",
   "description": "Tavily tools (search/extract/map/crawl/research) for Pi",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lin200083/pi-tavily-extension.git"
+  },
+  "homepage": "https://github.com/lin200083/pi-tavily-extension#readme",
+  "keywords": [
+    "pi",
+    "pi-extension",
+    "tavily",
+    "search",
+    "web-search",
+    "research"
+  ],
   "type": "module",
   "pi": {
     "extensions": [
