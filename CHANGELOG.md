@@ -1,5 +1,17 @@
 # Changelog
 
+## Unreleased
+
+Documentation and packaging only; no runtime behavior changes.
+
+- `README.md` / `README.zh-CN.md`: real install instructions — clone into
+  `~/.pi/agent/extensions/tavily`, install as a pi package
+  (`pi install git:github.com/lin200083/pi-tavily-extension`), or a one-off
+  `pi -e` run, plus how to update and where `config.json` survives an update.
+- Added `README.zh-CN.md` (Chinese translation), `LICENSE` (MIT), and
+  `license` / `repository` / `homepage` / `keywords` in `package.json`.
+- `config.json` is git-ignored; only `config.example.json` is tracked.
+
 ## 1.5.2
 
 Fixes from a second full review of the installed copy.

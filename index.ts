@@ -2,8 +2,9 @@
  * Tavily extension for Pi — 5 custom tools: search / extract / map / crawl / research.
  * Docs: https://docs.tavily.com
  *
- * Install: put this directory in ~/.pi/agent/extensions/tavily (or run `pi install /path/to/tavily`)
- * and restart pi. No `npm install` is needed at runtime: pi provides @earendil-works/* and typebox.
+ * Install: git clone https://github.com/lin200083/pi-tavily-extension.git
+ * ~/.pi/agent/extensions/tavily (or `pi install git:github.com/lin200083/pi-tavily-extension`),
+ * then restart pi. No `npm install` is needed at runtime: pi provides @earendil-works/* and typebox.
  *
  * Config: config.json in this directory. If it is missing at startup the session shows a
  * notification and config.example.json is written as a template; copy it and fill in apiKeys.

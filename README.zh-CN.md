@@ -10,16 +10,52 @@ TUI 结果行；底部状态栏没有会话花费汇总（原因见[设计取舍
 
 ## 安装
 
+需要支持扩展的 pi（`@earendil-works/pi-coding-agent`）。pi 用 `jiti` 加载 TypeScript，
+所以没有构建步骤。
+
+### 方式 A —— clone 到扩展目录（推荐）
+
 ```bash
-# 用户级
-mkdir -p ~/.pi/agent/extensions/tavily
-# 把本目录复制过去（或：pi install /path/to/tavily）
+mkdir -p ~/.pi/agent/extensions
+git clone https://github.com/lin200083/pi-tavily-extension.git \
+  ~/.pi/agent/extensions/tavily
+
+cp ~/.pi/agent/extensions/tavily/config.example.json \
+   ~/.pi/agent/extensions/tavily/config.json
+# 然后编辑 config.json，填入 apiKeys
 ```
 
-重启 pi（或执行 `/reload`）。首次启动时扩展会写出 `config.example.json`，把它复制为
-`config.json` 并填入 `apiKeys`。
+pi 会自动加载 `~/.pi/agent/extensions/` 下含 `index.ts` 入口的子目录，不需要改动
+settings 文件。`config.json` 已被 git 忽略，`git pull` 不会覆盖你的密钥：
+
+```bash
+git -C ~/.pi/agent/extensions/tavily pull
+```
+
+### 方式 B —— 作为 pi 包安装
+
+```bash
+pi install git:github.com/lin200083/pi-tavily-extension
+pi list        # 确认来源已写入配置
+```
+
+`pi install` 会把来源记录到 `~/.pi/agent/settings.json`；加 `--local` 则写入当前项目的
+`.pi/settings.json`。`pi update --extensions` 会重新对齐 checkout，所以请把 `config.json`
+放在它的上一级目录（扩展也会向上查找），或在更新后重新复制。
+
+不安装、只试用一次：
+
+```bash
+pi -e git:github.com/lin200083/pi-tavily-extension
+```
+
+### 两种方式共同的步骤
+
+重启 pi（或执行 `/reload`）。首次启动时，若还没有配置文件，扩展会写出
+`config.example.json`；把它复制为 `config.json` 并填入 `apiKeys`。
 
 运行时依赖由 pi 提供（`@earendil-works/*`、`typebox`），没有 `npm install` 步骤。
+密钥只从 `config.json` 读取 —— 不支持用环境变量覆盖。
 
 ## 配置
 

@@ -12,17 +12,56 @@ shown in the TUI result line; there is no session spend footer (see
 
 ## Install
 
+Requires pi with extension support (`@earendil-works/pi-coding-agent`) and Node
+with TypeScript loading — pi uses `jiti`, so there is no build step.
+
+### Option A — clone into the extensions directory (recommended)
+
 ```bash
-# user scope
-mkdir -p ~/.pi/agent/extensions/tavily
-# copy this directory there (or: pi install /path/to/tavily)
+mkdir -p ~/.pi/agent/extensions
+git clone https://github.com/lin200083/pi-tavily-extension.git \
+  ~/.pi/agent/extensions/tavily
+
+cp ~/.pi/agent/extensions/tavily/config.example.json \
+   ~/.pi/agent/extensions/tavily/config.json
+# then edit config.json and fill in apiKeys
 ```
 
+pi loads subdirectories that contain an `index.ts` entry point from
+`~/.pi/agent/extensions/`, so no settings file has to change. `config.json` is
+git-ignored, so `git pull` never overwrites your keys:
+
+```bash
+git -C ~/.pi/agent/extensions/tavily pull
+```
+
+### Option B — install as a pi package
+
+```bash
+pi install git:github.com/lin200083/pi-tavily-extension
+pi list        # confirm the source is configured
+```
+
+`pi install` records the source in `~/.pi/agent/settings.json`; add `--local`
+to write `.pi/settings.json` for one project instead. `pi update --extensions`
+reconciles the checkout, so put `config.json` one directory above it (the
+extension looks there too) or re-copy it after an update.
+
+Try it once without installing anything:
+
+```bash
+pi -e git:github.com/lin200083/pi-tavily-extension
+```
+
+### Both options
+
 Restart pi (or `/reload`). On first start the extension writes
-`config.example.json`; copy it to `config.json` and fill in `apiKeys`.
+`config.example.json` when no config file exists yet; copy it to `config.json`
+and fill in `apiKeys`.
 
 Runtime dependencies are provided by pi (`@earendil-works/*`, `typebox`); there
-is no `npm install` step.
+is no `npm install` step. Keys are read from `config.json` only — there is no
+environment-variable override.
 
 ## Configuration
 
